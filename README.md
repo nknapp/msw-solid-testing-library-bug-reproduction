@@ -21,3 +21,26 @@ it says under `exports`
   }
 ```
 
+# Patching msw
+
+This repo runs a [postinstall-script](./scripts/patch-msw-libs.mjs) that modifies the exports object like this:
+
+```
+  "exports": {
+    "./node": {
+      "types": "./lib/node/index.d.ts",
+      "node": {
+        "require": "./lib/node/index.js",
+        "import": "./lib/node/index.mjs"
+      },
+      "browser": null,
+      "default": "./lib/node/index.mjs"
+    },
+  }
+```
+
+and a similar change for `@mswjs/interceptors`.
+
+With this change, `vitest` can be executed and `vite build` will fail when 
+trying to import `msw/node`.
+

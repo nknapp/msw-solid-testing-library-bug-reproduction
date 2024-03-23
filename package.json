@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "postinstall": "node scripts/patch-msw-libs.mjs"
   },
   "dependencies": {
     "solid-js": "1.8.15"
@@ -16,7 +17,6 @@
     "jsdom": "24.0.0",
     "msw": "2.2.4",
     "patch-package": "8.0.0",
-    "resolve.exports": "2.0.2",
     "solid-testing-library": "0.5.1",
     "vite": "5.1.6",
     "vite-plugin-solid": "2.10.2",
